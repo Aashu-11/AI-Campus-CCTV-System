@@ -42,7 +42,7 @@ def initialize_camera():
     
     if not camera_initialized:
         try:
-            cap = cv2.VideoCapture("test.mp4")
+            cap = cv2.VideoCapture("test1.mp4")
             # if not cap.isOpened():
             #     for i in range(1, 5):
             #         cap = cv2.VideoCapture(i)
@@ -1372,12 +1372,12 @@ if __name__ == '__main__':
     print("  ✅ Real-time Email & Alert System")
     print("  ✅ Comprehensive Web Dashboard")
     print("=" * 60)
-    print("🌐 Access the system at: http://localhost:5000")
-    print("📊 Analytics Dashboard: http://localhost:5000/analytics_dashboard")
+    print("🌐 Access the system at: http://localhost:8080")
+    print("📊 Analytics Dashboard: http://localhost:8080/analytics_dashboard")
     print("=" * 60)
     
     try:
-        app.run(debug=False, host='0.0.0.0', port=5000, threaded=True)
+        app.run(debug=False, host='0.0.0.0', port=8080, threaded=True)
     except KeyboardInterrupt:
         print("\n🛑 Shutting down Enhanced 2A2S System...")
         if detector:
