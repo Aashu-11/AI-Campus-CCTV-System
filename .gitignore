@@ -1,0 +1,8 @@
+# ignore the pycache folder
+__pycache__
+
+# ignore pre trained yolo weights
+yolov8n.pt
+
+# ignore environment variables file
+.env
