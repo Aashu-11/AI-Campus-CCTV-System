@@ -1,6 +1,3 @@
-"""
-2A2S Enhanced Detector Class - FIXED: Robust Analytics & Detection
-"""
 
 import cv2
 import supervision as sv
@@ -16,8 +13,8 @@ from collections import defaultdict, deque
 import math
 import pywhatkit as pwk
 import time
-from threading import Lock
-import datetime as dt  # Add this import
+from threading import Lock, Thread
+import datetime as dt
 class Detector_2A2S:
     
     def __init__(self, cap):
@@ -161,12 +158,12 @@ class Detector_2A2S:
                 os.makedirs(directory, exist_ok=True)
             except Exception as e:
                 print(f"Error creating directory {directory}: {e}")
-            # PARAMETERS: WhatsApp Alert System - ROBUST IMPLEMENTATION
+        # PARAMETERS: WhatsApp Alert System - ROBUST IMPLEMENTATION
         self.whatsapp_enabled = True
-        self.whatsapp_number = "+919167467902"  # Target WhatsApp number
+        self.whatsapp_number = "+919324017136"  # Target WhatsApp number
         self.whatsapp_lock = Lock()  # Thread safety for WhatsApp sending
         self.last_whatsapp_alert = {}  # Track last alert times to prevent spam
-        self.whatsapp_cooldown = 300  # 5 minutes cooldown between same alert types
+        self.whatsapp_cooldown = 30  # 5 minutes cooldown between same alert types
 
         # WhatsApp alert triggers - ONLY for specified conditions
         self.whatsapp_triggers = {
@@ -176,8 +173,7 @@ class Detector_2A2S:
             'motion': False,  # Disabled as per requirement
             'loitering': False,  # Disabled as per requirement
             'suspicious_object': False  # Disabled as per requirement
-}
-
+        }
     def gpu_check(self):
         """
         Checks if a GPU is available. 
@@ -241,7 +237,158 @@ class Detector_2A2S:
         except Exception as e:
             print(f"Error checking alert times: {e}")
             return False
+    
+    def send_whatsapp_alert(self, alert_type, alert_data):
+        """
+        ROBUST WhatsApp Alert System using pywhatkit
+        Only triggers for: abandoned_object, fall_detection, shadow_detection
+        """
+        if not self.whatsapp_enabled:
+            return
+            
+        # Check if this alert type should trigger WhatsApp
+        if not self.whatsapp_triggers.get(alert_type, False):
+            return
+            
+        try:
+            with self.whatsapp_lock:  # Thread safety
+                current_time = datetime.now()
+                
+                # Cooldown check to prevent spam
+                last_alert_key = f"{alert_type}_whatsapp"
+                if last_alert_key in self.last_whatsapp_alert:
+                    time_diff = (current_time - self.last_whatsapp_alert[last_alert_key]).total_seconds()
+                    if time_diff < self.whatsapp_cooldown:
+                        print(f"WhatsApp alert cooldown active for {alert_type}. Skipping...")
+                        return
+                
+                # Update last alert time
+                self.last_whatsapp_alert[last_alert_key] = current_time
+                
+                # Create robust alert message based on type
+                message = self._create_whatsapp_message(alert_type, alert_data, current_time)
+                
+                # Send WhatsApp message with error handling
+                print(f"🔔 Attempting to send WhatsApp alert for {alert_type}...")
+                
+                # Get current time for immediate sending
+                now = datetime.now()
+                hour = now.hour
+                minute = now.minute + 1  # Send 1 minute from now
+                
+                # Handle minute overflow
+                if minute >= 60:
+                    minute = 0
+                    hour += 1
+                    if hour >= 24:
+                        hour = 0
+                
+                # Send WhatsApp message
+                pwk.sendwhatmsg(
+                    phone_no=self.whatsapp_number,
+                    message=message,
+                    time_hour=hour,
+                    time_min=minute,
+                    wait_time=15,  # Wait 15 seconds for WhatsApp to load
+                    tab_close=True,  # Auto close tab after sending
+                    close_time=3  # Close after 3 seconds
+                )
+                
+                print(f"✅ WhatsApp alert sent successfully for {alert_type}")
+                
+                # Log WhatsApp alert
+                whatsapp_log = {
+                    'timestamp': current_time.isoformat(),
+                    'type': f'{alert_type}_whatsapp',
+                    'phone_number': self.whatsapp_number,
+                    'message': message,
+                    'status': 'sent'
+                }
+                self.log_analytics_event('whatsapp_alerts', whatsapp_log)
+                
+        except Exception as e:
+            print(f"❌ Error sending WhatsApp alert for {alert_type}: {e}")
+            # Log failed WhatsApp attempt
+            try:
+                error_log = {
+                    'timestamp': datetime.now().isoformat(),
+                    'type': f'{alert_type}_whatsapp_failed',
+                    'phone_number': self.whatsapp_number,
+                    'error': str(e),
+                    'status': 'failed'
+                }
+                self.log_analytics_event('whatsapp_alerts', error_log)
+            except:
+                pass  # Don't let logging errors break the system
 
+    def _create_whatsapp_message(self, alert_type, alert_data, timestamp):
+        """
+        Create robust, formatted WhatsApp messages for different alert types
+        """
+        base_header = "🛡️ *SecureVista Security Alert* 🚨\n"
+        base_footer = f"\n📅 Time: {timestamp.strftime('%Y-%m-%d %H:%M:%S')}\n🏢 Location: Security Camera System"
+        
+        if alert_type == 'abandoned_object':
+            obj_class = alert_data.get('class', 'Unknown Object')
+            duration = alert_data.get('duration', 0)
+            center = alert_data.get('center', [0, 0])
+            
+            message = f"""{base_header}
+⚠️ *ABANDONED OBJECT DETECTED* ⚠️
+
+📦 Object Type: {obj_class}
+⏱️ Duration: {duration:.1f} seconds
+📍 Location: X:{center[0]:.0f}, Y:{center[1]:.0f}
+
+🔍 An object has been left unattended for an extended period. Immediate attention required.
+{base_footer}"""
+
+        elif alert_type == 'fall_detection':
+            center = alert_data.get('center', [0, 0])
+            reason = alert_data.get('reason', 'unknown')
+            aspect_ratio = alert_data.get('aspect_ratio', 0)
+            
+            message = f"""{base_header}
+🚑 *FALL DETECTION ALERT* 🚑
+
+👤 Person Fall Detected
+📍 Location: X:{center[0]:.0f}, Y:{center[1]:.0f}
+🔍 Detection Method: {reason.replace('_', ' ').title()}
+📊 Aspect Ratio: {aspect_ratio:.2f}
+
+🆘 URGENT: A person may have fallen and requires immediate assistance!
+{base_footer}"""
+
+        elif alert_type == 'shadow_detection':
+            shadow_pixels = alert_data.get('data', {}).get('shadow_pixels', 0)
+            light_change = alert_data.get('data', {}).get('light_change_detected', False)
+            mean_change = alert_data.get('data', {}).get('mean_light_change', 0)
+            
+            message = f"""{base_header}
+🌒 *SHADOW ANALYSIS ALERT* 🌒
+
+👥 Suspicious Shadow Movement Detected
+📊 Shadow Pixels: {shadow_pixels}
+💡 Light Change: {'Yes' if light_change else 'No'}
+📈 Intensity Change: {mean_change:.1f}
+
+🔍 Unusual shadow patterns detected. Possible unauthorized movement in monitored area.
+{base_footer}"""
+
+        else:
+            # Fallback message for any unexpected alert type
+            message = f"""{base_header}
+🔔 *SECURITY ALERT* 🔔
+
+Alert Type: {alert_type.replace('_', ' ').title()}
+Data: {str(alert_data)[:100]}...
+
+🔍 Security system has detected an event requiring attention.
+{base_footer}"""
+        
+        return message
+
+  
     def get_export_frame(self):
         """
         Retrieves latest frame to use in GUI/Web interface
@@ -708,8 +855,6 @@ class Detector_2A2S:
             for alert in fall_alerts:
                 self.log_analytics_event('fall_detections', alert)
                 if self.isSendingAlerts:
-                    # Send email alert
-                    self.send_alert('fall_detection', alert)
                     # Send WhatsApp alert - NEW ADDITION
                     self.send_whatsapp_alert('fall_detection', alert)
                     
@@ -809,59 +954,7 @@ class Detector_2A2S:
                 
         except Exception as e:
             pass
-    def send_whatsapp_alert(self, alert_type, alert_data):
-        """
-        Send WhatsApp alert with cooldown protection
-        """
-        if not self.whatsapp_enabled or alert_type not in self.whatsapp_triggers:
-            return
-            
-        if not self.whatsapp_triggers[alert_type]:
-            return
-            
-        try:
-            with self.whatsapp_lock:
-                current_time = datetime.now()
-                
-                # Check cooldown
-                if alert_type in self.last_whatsapp_alert:
-                    time_diff = (current_time - self.last_whatsapp_alert[alert_type]).total_seconds()
-                    if time_diff < self.whatsapp_cooldown:
-                        return
-                
-                # Prepare message based on alert type
-                if alert_type == 'abandoned_object':
-                    message = f"🚨 SECURITY ALERT: Abandoned {alert_data.get('class', 'object')} detected for {alert_data.get('duration', 0):.0f} seconds at {current_time.strftime('%H:%M:%S')}"
-                elif alert_type == 'fall_detection':
-                    message = f"🆘 EMERGENCY: Fall detected! Person may need assistance. Time: {current_time.strftime('%H:%M:%S')} Reason: {alert_data.get('reason', 'unknown')}"
-                elif alert_type == 'shadow_detection':
-                    message = f"🌙 ALERT: Significant shadow movement detected at {current_time.strftime('%H:%M:%S')}. Possible intrusion."
-                else:
-                    message = f"🔔 ALERT: {alert_type} detected at {current_time.strftime('%H:%M:%S')}"
-                
-                # Send WhatsApp message
-                try:
-                    # Calculate time to send (immediately)
-                    now = current_time
-                    hour = now.hour
-                    minute = now.minute + 1  # Send in next minute
-                    if minute >= 60:
-                        hour += 1
-                        minute = 0
-                    if hour >= 24:
-                        hour = 0
-                    
-                    pwk.sendwhatmsg(self.whatsapp_number, message, hour, minute, wait_time=10, tab_close=True)
-                    print(f"WhatsApp alert sent for {alert_type}")
-                    
-                    # Update last alert time
-                    self.last_whatsapp_alert[alert_type] = current_time
-                    
-                except Exception as whatsapp_error:
-                    print(f"Failed to send WhatsApp message: {whatsapp_error}")
-                    
-        except Exception as e:
-            print(f"Error in WhatsApp alert system: {e}")
+    
     def get_analytics_data(self):
         """
         FIXED: Get analytics data with robust error handling
@@ -1347,11 +1440,42 @@ class Detector_2A2S:
     def cleanup(self):
         """Clean up resources"""
         self.stop_detection()
+        
+        # Clear WhatsApp queue
+        with self.whatsapp_lock:
+            self.whatsapp_queue.clear()
+        
         if self.cap:
             self.cap.release()
         cv2.destroyAllWindows()
         print("Detector cleanup completed")
+    def enable_whatsapp_alerts(self, enabled=True):
+        """Enable or disable WhatsApp alerts"""
+        self.whatsapp_enabled = enabled
+        print(f"WhatsApp alerts {'enabled' if enabled else 'disabled'}")
 
+    def update_whatsapp_number(self, phone_number):
+        """Update WhatsApp phone number"""
+        # Ensure proper format
+        if not phone_number.startswith('+'):
+            phone_number = '+' + phone_number
+        self.whatsapp_number = phone_number
+        print(f"WhatsApp number updated to: {phone_number}")
+
+    def set_whatsapp_cooldown(self, seconds):
+        """Set cooldown period between WhatsApp alerts"""
+        self.whatsapp_cooldown = max(60, seconds)  # Minimum 1 minute
+        print(f"WhatsApp cooldown set to: {seconds} seconds")
+
+    def get_whatsapp_status(self):
+        """Get current WhatsApp alert status"""
+        return {
+            'enabled': self.whatsapp_enabled,
+            'phone_number': self.whatsapp_number,
+            'cooldown_seconds': self.whatsapp_cooldown,
+            'triggers': self.whatsapp_triggers,
+            'last_alerts': self.last_whatsapp_alert
+        }
 if __name__ == '__main__':
     cap = cv2.VideoCapture(0)
     if not cap.isOpened():

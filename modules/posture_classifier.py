@@ -74,15 +74,13 @@ class PostureClassifier:
             torso_vertical = abs(shoulder_center_y - hip_center_y)
             
             # More accurate posture classification
-            if torso_vertical < 0.15:  # Very horizontal torso
-                return "Lying"
-            elif knee_center_y > hip_center_y + 0.15 and ankle_center_y > knee_center_y:  # Knees bent, ankles below knees
-                return "Sitting"
-            elif ankle_center_y > knee_center_y and knee_center_y > hip_center_y:  # Standing position
+            
+            if ankle_center_y > knee_center_y and knee_center_y > hip_center_y:  # Standing position
                 return "Standing"
             else:
-                return "Unknown"
+                return "Analyzing..."
+            
                 
         except Exception as e:
             logger.error(f"Error analyzing pose landmarks: {e}")
-            return "Unknown"
+            return "Analyzing..."

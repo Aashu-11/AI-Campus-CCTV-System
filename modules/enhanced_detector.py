@@ -61,7 +61,6 @@ class Enhanced2A2SDetector:
             'current_people_count': 0,
             'entry_count': 0,
             'exit_count': 0,
-            'fall_alerts': 0,
             'crowd_alerts': 0,
             'inactivity_alerts': 0
         }
@@ -207,11 +206,7 @@ class Enhanced2A2SDetector:
                     posture_label = f"{posture}"
                     cv2.putText(frame, posture_label, (x1, y2 + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
                     
-                    # Fall detection
-                    if posture == "Lying":
-                        cv2.putText(frame, "FALL DETECTED!", (x1, y1 - 50), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2)
-                        if self.alert_system.trigger_fall_alert(obj_id, timestamp):
-                            self.stats['fall_alerts'] += 1
+                   
                 
                 # Check for inactivity
                 if info['is_stationary']:
@@ -269,8 +264,6 @@ class Enhanced2A2SDetector:
                       (15, y_offset), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
             cv2.putText(frame, f"Entries: {self.stats['entry_count']} | Exits: {self.stats['exit_count']}", 
                       (15, y_offset + 25), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
-            cv2.putText(frame, f"Fall Alerts: {self.stats['fall_alerts']}", 
-                      (15, y_offset + 50), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
             cv2.putText(frame, f"Crowd Alerts: {self.stats['crowd_alerts']}", 
                       (15, y_offset + 75), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
             cv2.putText(frame, f"Inactivity Alerts: {self.stats['inactivity_alerts']}", 
@@ -343,7 +336,6 @@ class Enhanced2A2SDetector:
             'current_people_count': 0,
             'entry_count': 0,
             'exit_count': 0,
-            'fall_alerts': 0,
             'crowd_alerts': 0,
             'inactivity_alerts': 0
         }

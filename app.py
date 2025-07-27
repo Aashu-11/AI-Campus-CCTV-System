@@ -93,8 +93,13 @@ def index():
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--dark-bg) 0%, #2d2d2d 25%, var(--primary-gray) 50%, #404040 75%, var(--dark-bg) 100%);
+           
+            background: radial-gradient(circle at 30% 30%, rgba(94, 8, 2, 0.7) 0%, rgba(26, 0, 0, 0.9) 40%, #1a0000 80%),
+              linear-gradient(120deg, #1a0000 0%, #2c0a0a 25%, #3b0e0e 50%, #5e0802 75%, #b2b2b2 100%);
+            background-blend-mode: overlay, multiply;
+            box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.8);
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
             background-attachment: fixed;
             min-height: 100vh;
             padding: 20px;
@@ -678,10 +683,7 @@ def index():
                         <span class="stat-value" id="totalExits">0</span>
                         <span class="stat-label">Exits</span>
                     </div>
-                    <div class="stat-card">
-                        <span class="stat-value" id="fallAlerts">0</span>
-                        <span class="stat-label">Fall Alerts</span>
-                    </div>
+                   
                 </div>
             </div>
             
@@ -793,7 +795,6 @@ def index():
                         document.getElementById('currentPeople').textContent = stats.current_people_count;
                         document.getElementById('totalEntries').textContent = stats.entry_count;
                         document.getElementById('totalExits').textContent = stats.exit_count;
-                        document.getElementById('fallAlerts').textContent = stats.fall_alerts;
                         
                         // Update alert logs
                         if (data.recent_alerts && data.recent_alerts.length > 0) {
@@ -1252,7 +1253,6 @@ def analytics_dashboard():
                         document.getElementById('currentPeople').textContent = data.stats.current_people_count;
                         document.getElementById('totalEntries').textContent = data.stats.entry_count;
                         document.getElementById('totalExits').textContent = data.stats.exit_count;
-                        document.getElementById('fallAlerts').textContent = data.stats.fall_alerts;
                         document.getElementById('crowdAlerts').textContent = data.stats.crowd_alerts;
                         document.getElementById('inactivityAlerts').textContent = data.stats.inactivity_alerts;
                         document.getElementById('totalDetections').textContent = data.stats.total_detections;
@@ -1304,11 +1304,6 @@ def analytics_dashboard():
             <p>Total exits detected</p>
         </div>
         
-        <div class="card">
-            <h3>🚨 Fall Alerts</h3>
-            <div class="metric" id="fallAlerts">0</div>
-            <p>Fall detection alerts triggered</p>
-        </div>
         
         <div class="card">
             <h3>👨‍👩‍👧‍👦 Crowd Alerts</h3>
