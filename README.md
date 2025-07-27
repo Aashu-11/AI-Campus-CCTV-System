@@ -117,12 +117,12 @@ All modules run in microservices communicating via REST and WebSocket for lightn
 <div align="center">
   <table>
     <tr>
-      <td><img src="https://via.placeholder.com/400x225.png?text=Live+Dashboard" alt="Dashboard"></td>
-      <td><img src="https://via.placeholder.com/400x225.png?text=Alert+View" alt="Alert View"></td>
+      <td><img src="images/homepage.jpeg" alt="Dashboard"></td>
+      <td><img src="images/homepage2.jpeg" alt="Alert View"></td>
     </tr>
     <tr>
-      <td><img src="https://via.placeholder.com/400x225.png?text=Pose+Estimation+Module" alt="Pose Detection"></td>
-      <td><img src="https://via.placeholder.com/400x225.png?text=Person+Tracker" alt="Person Tracker"></td>
+      <td><img src="images/fallDetection.png" alt="Fall Detection"></td>
+      <td><img src="images/abandoned.jpeg" alt="Abandoned object detection"></td>
     </tr>
   </table>
 </div>
