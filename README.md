@@ -118,10 +118,10 @@ All modules run in microservices communicating via REST and WebSocket for lightn
   <table>
     <tr>
       <td><img src="images/homepage.jpeg" alt="Dashboard"></td>
-      <td><img src="images/homepage2.jpeg" alt="Alert View"></td>
+      <td><img src="images/fallDetection.png" alt="Alert View"></td>
     </tr>
     <tr>
-      <td><img src="images/fallDetection.png" alt="Fall Detection"></td>
+      <td><img src="images/homepage2.jpeg" alt="Fall Detection"></td>
       <td><img src="images/abandoned.jpeg" alt="Abandoned object detection"></td>
     </tr>
   </table>
@@ -140,7 +140,7 @@ All modules run in microservices communicating via REST and WebSocket for lightn
 ## 📂 Project Info Deck
 
 <div align="center">
-  <a href="https://your-infodeck-link.com" target="_blank">
+  <a href="https://drive.google.com/file/d/1DICn8JUTFaYQgDGBZCSn3C9VwlGUvkdT/view?usp=sharing" target="_blank">
     <img src="https://img.shields.io/badge/📄-Project_Info_Deck-blue?style=for-the-badge&logo=google-drive&logoColor=white">
   </a>
 </div>
@@ -168,14 +168,17 @@ All modules run in microservices communicating via REST and WebSocket for lightn
 ## 🔗 Useful Links
 
 <div align="center">
-  <a href="https://securevista.app">
-    <img src="https://img.shields.io/badge/🌐-Live_Demo-00B0FF?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo">
+  <a href="https://www.linkedin.com/in/aayushkolte/">
+    <img src="https://img.shields.io/badge/📧-Contact_Us-red?style=for-the-badge&logo=gmail&logoColor=white" alt="Aayush">
   </a>
-  <a href="https://securevista.docs">
-    <img src="https://img.shields.io/badge/📄-Docs-00C853?style=for-the-badge&logo=readthedocs&logoColor=white" alt="Documentation">
+  <a href="https://www.linkedin.com/in/akshat-sanjay-patil/?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAFG4OzEB0sb_rfikqAW2Jv0aBfi4AxXjvF0">
+    <img src="https://img.shields.io/badge/📧-Contact_Us-red?style=for-the-badge&logo=gmail&logoColor=white" alt="Akshat">
   </a>
-  <a href="mailto:team@securevista.ai">
-    <img src="https://img.shields.io/badge/📧-Contact_Us-red?style=for-the-badge&logo=gmail&logoColor=white" alt="Contact">
+  <a href="https://www.linkedin.com/in/hitanshu--nayan-rathi/">
+    <img src="https://img.shields.io/badge/📧-Contact_Us-red?style=for-the-badge&logo=gmail&logoColor=white" alt="Hitanshu">
+  </a>
+  <a href="https://www.linkedin.com/in/dhirensacher">
+    <img src="https://img.shields.io/badge/📧-Contact_Us-red?style=for-the-badge&logo=gmail&logoColor=white" alt="Dhiren">
   </a>
 </div>
 
