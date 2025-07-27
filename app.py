@@ -1156,9 +1156,12 @@ def analytics_dashboard():
     <style>
         body { 
             font-family: 'Inter', sans-serif; 
-            margin: 20px; 
-            background: linear-gradient(135deg, #1a1a1a, #2d2d2d, #898f8f); 
-            color: #DABFC8; 
+            background: radial-gradient(circle at 30% 30%, rgba(94, 8, 2, 0.7) 0%, rgba(26, 0, 0, 0.9) 40%, #1a0000 80%),
+            linear-gradient(120deg, #1a0000 0%, #2c0a0a 25%, #3b0e0e 50%, #5e0802 75%, #b2b2b2 100%);
+            background-blend-mode: overlay, multiply;
+            box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.8);
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
             min-height: 100vh;
         }
         .dashboard { 

@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* SecureVista Design System - Professional Security Tech Aesthetic
+All colors MUST be HSL. Dark theme with deep maroon and tech elements.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* SecureVista Dark Theme */
+    --background: 0 0% 2%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 90%;
+    --card-hover: 0 0% 8%;
+
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Primary: Deep Maroon Red */
+    --primary: 0 86% 19%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 0 86% 25%;
+
+    /* Secondary: Light Grey */
+    --secondary: 0 0% 70%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 90%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 0 86% 19%;
+
+    --radius: 0.75rem;
+
+    /* Tech gradients and effects */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--accent)));
+    --gradient-tech: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+    
+    /* Shadows and glows */
+    --shadow-card: 0 8px 30px -8px hsl(var(--primary) / 0.2);
+    --shadow-card-hover: 0 20px 40px -12px hsl(var(--primary) / 0.4);
+    --glow-primary: 0 0 30px hsl(var(--primary-glow) / 0.5);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-card: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+  }
+}
+
+@layer components {
+  .tech-card {
+    @apply relative overflow-hidden rounded-xl bg-gradient-to-br from-card to-accent/30 
+           border border-border/50 backdrop-blur-sm transition-all duration-300
+           hover:shadow-[0_20px_40px_-12px_hsl(var(--primary)/0.4)] 
+           hover:scale-[1.02] hover:border-primary/30;
+  }
+  
+  .tech-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent, hsl(var(--primary) / 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .tech-card:hover::before {
+    opacity: 1;
+  }
+  
+  .nav-button {
+    @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium
+           border border-border/50 bg-card/50 backdrop-blur-sm text-foreground
+           transition-all duration-200 hover:bg-card hover:border-primary/30 
+           hover:shadow-md hover:scale-105;
+  }
+  
+  .tech-background {
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, hsl(var(--primary-glow) / 0.05) 0%, transparent 50%),
+      linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.3) 100%);
+  }
+}

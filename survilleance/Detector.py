@@ -57,7 +57,7 @@ class Detector_2A2S:
 
         # PARAMETERS: Alert system
         self.alert_time_start = "20:00"
-        self.alert_time_end = "08:00"
+        self.alert_time_end = "19:00"
         self.isSendingAlerts = False
         self.user_alerter = Email_Alert.email_alert_system()
 
@@ -160,7 +160,7 @@ class Detector_2A2S:
                 print(f"Error creating directory {directory}: {e}")
         # PARAMETERS: WhatsApp Alert System - ROBUST IMPLEMENTATION
         self.whatsapp_enabled = True
-        self.whatsapp_number = "+919324017136"  # Target WhatsApp number
+        self.whatsapp_number = "+919967533958"  # Target WhatsApp number
         self.whatsapp_lock = Lock()  # Thread safety for WhatsApp sending
         self.last_whatsapp_alert = {}  # Track last alert times to prevent spam
         self.whatsapp_cooldown = 30  # 5 minutes cooldown between same alert types

@@ -23,3 +23,18 @@ Time: 7:45
 Phone Number: +919167467902
 Message: 🚨 SECURITY ALERT: Abandoned backpack detected for 20 seconds at 07:45:20
 --------------------
+Date: 27/7/2025
+Time: 11:34
+Phone Number: +919324017136
+Message: 🛡️ *SecureVista Security Alert* 🚨🚑 *FALL DETECTION ALERT* 🚑👤 Person Fall Detected📍 Location: X:155, Y:169🔍 Detection Method: High Aspect Ratio📊 Aspect Ratio: 1.54🆘 URGENT: A person may have fallen and requires immediate assistance!📅 Time: 2025-07-27 11:34:40🏢 Location: Security Camera System
+--------------------
+Date: 27/7/2025
+Time: 11:36
+Phone Number: +919324017136
+Message: 🛡️ *SecureVista Security Alert* 🚨🚑 *FALL DETECTION ALERT* 🚑👤 Person Fall Detected📍 Location: X:118, Y:234🔍 Detection Method: Sudden Height Change📊 Aspect Ratio: 1.12🆘 URGENT: A person may have fallen and requires immediate assistance!📅 Time: 2025-07-27 11:36:44🏢 Location: Security Camera System
+--------------------
+Date: 27/7/2025
+Time: 11:40
+Phone Number: +919967533958
+Message: 🛡️ *SecureVista Security Alert* 🚨🚑 *FALL DETECTION ALERT* 🚑👤 Person Fall Detected📍 Location: X:206, Y:375🔍 Detection Method: High Aspect Ratio📊 Aspect Ratio: 1.97🆘 URGENT: A person may have fallen and requires immediate assistance!📅 Time: 2025-07-27 11:40:27🏢 Location: Security Camera System
+--------------------
