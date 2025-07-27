@@ -34,7 +34,12 @@ const Header = () => {
           
           <div className="flex items-center space-x-4">
             <ThemeToggle />
-            <Button variant="hero" size="lg" className="hover:animate-bounce-subtle">
+            <Button 
+              variant="hero" 
+              size="lg" 
+              className="hover:animate-bounce-subtle"
+              onClick={() => window.location.href = 'http://localhost:3001'}
+            >
               Get Started
             </Button>
           </div>

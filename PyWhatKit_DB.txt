@@ -38,3 +38,18 @@ Time: 11:40
 Phone Number: +919967533958
 Message: 🛡️ *SecureVista Security Alert* 🚨🚑 *FALL DETECTION ALERT* 🚑👤 Person Fall Detected📍 Location: X:206, Y:375🔍 Detection Method: High Aspect Ratio📊 Aspect Ratio: 1.97🆘 URGENT: A person may have fallen and requires immediate assistance!📅 Time: 2025-07-27 11:40:27🏢 Location: Security Camera System
 --------------------
+Date: 27/7/2025
+Time: 14:48
+Phone Number: +919967533958
+Message: 🛡️ *SecureVista Security Alert* 🚨🌒 *SHADOW ANALYSIS ALERT* 🌒👥 Suspicious Shadow Movement Detected📊 Shadow Pixels: 2102💡 Light Change: No📈 Intensity Change: 2.6🔍 Unusual shadow patterns detected. Possible unauthorized movement in monitored area.📅 Time: 2025-07-27 14:48:20🏢 Location: Security Camera System
+--------------------
+Date: 27/7/2025
+Time: 14:49
+Phone Number: +919967533958
+Message: 🛡️ *SecureVista Security Alert* 🚨🌒 *SHADOW ANALYSIS ALERT* 🌒👥 Suspicious Shadow Movement Detected📊 Shadow Pixels: 75370💡 Light Change: Yes📈 Intensity Change: 41.4🔍 Unusual shadow patterns detected. Possible unauthorized movement in monitored area.📅 Time: 2025-07-27 14:49:04🏢 Location: Security Camera System
+--------------------
+Date: 27/7/2025
+Time: 14:50
+Phone Number: +919967533958
+Message: 🛡️ *SecureVista Security Alert* 🚨🌒 *SHADOW ANALYSIS ALERT* 🌒👥 Suspicious Shadow Movement Detected📊 Shadow Pixels: 94085💡 Light Change: Yes📈 Intensity Change: 40.9🔍 Unusual shadow patterns detected. Possible unauthorized movement in monitored area.📅 Time: 2025-07-27 14:50:04🏢 Location: Security Camera System
+--------------------

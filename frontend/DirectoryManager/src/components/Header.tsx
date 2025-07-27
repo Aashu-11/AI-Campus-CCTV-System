@@ -6,11 +6,21 @@ const Header = () => {
     <header className="relative z-10 flex items-center justify-between p-6 bg-background/80 backdrop-blur-sm border-b border-border/50">
       {/* Left side - Navigation buttons */}
       <div className="flex items-center gap-3">
-        <Button variant="ghost" size="sm" className="nav-button">
+        <Button 
+          variant="ghost" 
+          size="sm" 
+          className="nav-button"
+          onClick={() => window.location.href = 'http://localhost:3000'}
+        >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back
         </Button>
-        <Button variant="ghost" size="sm" className="nav-button">
+        <Button 
+          variant="ghost" 
+          size="sm" 
+          className="nav-button"
+          onClick={() => window.location.href = 'http://localhost:3000'}
+        >
           <Home className="w-4 h-4 mr-2" />
           Home
         </Button>

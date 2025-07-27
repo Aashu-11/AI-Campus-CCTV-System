@@ -1,5 +1,3 @@
-
-
 from flask import Flask, Response, jsonify, request, render_template_string
 from flask_cors import CORS
 import cv2
@@ -1363,6 +1361,14 @@ DASHBOARD_TEMPLATE = '''
 </head>
 <body>
     <div class="header">
+        <!-- Add Back Button -->
+        <button 
+            onclick="window.location.href='http://localhost:3001'" 
+            class="btn btn-primary" 
+            style="position: absolute; left: 20px; top: 20px; display: flex; align-items: center; gap: 8px;"
+        >
+            <span style="font-size: 20px;">←</span> Back
+        </button>
         <h1>🛡️ SecureVista Advanced AI Surveillance System</h1>
         <div class="system-status">
             <div class="status-item">

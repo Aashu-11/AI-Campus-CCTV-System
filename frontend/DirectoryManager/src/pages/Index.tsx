@@ -36,12 +36,12 @@ const Index = () => {
           <SecurityCard
             title="Surveillance System"
             backgroundImage={surveillanceHero}
-            onClick={() => console.log('Navigate to Surveillance System')}
+            onClick={() => window.location.href = 'http://localhost:5000'}
           />
           <SecurityCard
             title="Entry Exit System"
             backgroundImage={entryExitHero}
-            onClick={() => console.log('Navigate to Entry Exit System')}
+            onClick={() => window.location.href = 'http://localhost:8080'}
           />
         </div>
 

@@ -39,12 +39,22 @@ const Hero = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="lg" className="text-lg px-8 py-6 group relative overflow-hidden">
+              <Button 
+                variant="hero" 
+                size="lg" 
+                className="text-lg px-8 py-6 group relative overflow-hidden"
+                onClick={() => window.location.href = 'http://localhost:3001'}
+              >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                 <Zap className="h-5 w-5 mr-2 group-hover:animate-bounce" />
                 Start Now
               </Button>
-              <Button variant="metallic" size="lg" className="text-lg px-8 py-6 group relative overflow-hidden">
+              <Button 
+                variant="metallic" 
+                size="lg" 
+                className="text-lg px-8 py-6 group relative overflow-hidden"
+                onClick={() => window.location.href = 'http://localhost:3001'}
+              >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                 <Play className="h-5 w-5 mr-2 group-hover:animate-bounce" />
                 Watch Demo

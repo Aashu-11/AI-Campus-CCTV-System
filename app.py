@@ -683,7 +683,7 @@ def index():
                         <span class="stat-value" id="totalExits">0</span>
                         <span class="stat-label">Exits</span>
                     </div>
-                   
+                  
                 </div>
             </div>
             
@@ -929,7 +929,7 @@ def video_feed():
                     if not ret:
                         continue
                         
-                    frame_bytes = buffer.tobytes()
+                    frame_bytes = buffer.tobytes();
                     yield (b'--frame\r\n'
                            b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
                 else:
@@ -939,7 +939,7 @@ def video_feed():
                               (350, 360), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
                     ret, buffer = cv2.imencode('.jpg', loading_frame)
                     if ret:
-                        frame_bytes = buffer.tobytes()
+                        frame_bytes = buffer.tobytes();
                         yield (b'--frame\r\n'
                                b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
                 
@@ -952,7 +952,7 @@ def video_feed():
                           (50, 360), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
                 ret, buffer = cv2.imencode('.jpg', error_frame)
                 if ret:
-                    frame_bytes = buffer.tobytes()
+                    frame_bytes = buffer.tobytes();
                     yield (b'--frame\r\n'
                            b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
                 time.sleep(1)
@@ -1246,6 +1246,31 @@ def analytics_dashboard():
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(237, 0, 33, 0.3);
         }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #ED0021, #FF5252);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(237, 0, 33, 0.3);
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(237, 0, 33, 0.4);
+        }
     </style>
     <script>
         function refreshData() {
@@ -1284,6 +1309,9 @@ def analytics_dashboard():
     </script>
 </head>
 <body>
+    <button onclick="window.location.href='http://localhost:3001'" class="back-btn">
+        ← Back
+    </button>
     <h1>📊 SecureVista Analytics Dashboard</h1>
     
     <button class="refresh-btn" onclick="refreshData()">🔄 Refresh Data</button>
