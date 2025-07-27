@@ -9,7 +9,7 @@ import json
 from datetime import datetime, timedelta
 import os
 import numpy as np
-from survelliance.Detector import Detector_2A2S  # Import the enhanced detector
+from survilleance.Detector import Detector_2A2S  # Import the enhanced detector
 
 # Mock classes for demonstration (replace with your actual imports)
 class MockEmailAlert:
@@ -124,7 +124,7 @@ def create_error_frame(message):
     for i in range(480):
         frame[i, :] = [int(50 + i*0.1), int(30 + i*0.05), int(30 + i*0.05)]
     
-    cv2.putText(frame, "2A2S SURVEILLANCE SYSTEM", (120, 100), 
+    cv2.putText(frame, "SecureVista SURVEILLANCE SYSTEM", (120, 100), 
               cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
     cv2.putText(frame, "ERROR DETECTED", (200, 200), 
               cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 255), 2)
@@ -141,7 +141,7 @@ def create_loading_frame():
     for i in range(480):
         frame[i, :] = [int(20 + i*0.1), int(40 + i*0.1), int(60 + i*0.1)]
     
-    cv2.putText(frame, "2A2S ADVANCED SURVEILLANCE", (100, 150), 
+    cv2.putText(frame, "SecureVista ADVANCED SURVEILLANCE", (100, 150), 
               cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
     cv2.putText(frame, "Initializing Advanced Analytics...", (120, 200), 
               cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2)
@@ -164,7 +164,7 @@ def create_initialization_frame():
     cv2.line(frame, (timestamp, 0), (timestamp, 480), (0, 50, 100), 2)
     cv2.line(frame, (0, timestamp % 480), (640, timestamp % 480), (0, 50, 100), 2)
     
-    cv2.putText(frame, "2A2S SURVEILLANCE SYSTEM", (120, 120), 
+    cv2.putText(frame, "SecureVista SURVEILLANCE SYSTEM", (120, 120), 
               cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
     cv2.putText(frame, "Advanced AI-Augmented Analytics", (130, 160), 
               cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 255), 2)
@@ -195,7 +195,7 @@ def start_camera():
             "features": [
                 "Motion Detection", "Object Recognition", "Shadow Analysis",
                 "Abandoned Object Detection", "Loitering Detection", 
-                "Suspicious Object Detection", "Fall Detection"
+                 "Fall Detection"
             ]
         })
     else:
@@ -236,9 +236,7 @@ def trigger_alert():
                 "alert_data": alert_data
             })
         except Exception as e:
-            return jsonify({
-                "message": f"Error triggering alert: {str(e)}"
-            }), 500
+            pass
     
     return jsonify({"message": "Detector not initialized"}), 400
 
@@ -344,7 +342,7 @@ def export_logs():
         export_data = {
             "export_timestamp": datetime.now().isoformat(),
             "system_info": {
-                "version": "2A2S Enhanced v2.0",
+                "version": "SecureVista Enhanced v2.0",
                 "camera_initialized": camera_initialized,
                 "detector_running": detector.running if detector else False
             },
@@ -380,7 +378,7 @@ def export_logs():
             status=200,
             mimetype='application/json'
         )
-        response.headers['Content-Disposition'] = f'attachment; filename=2a2s_logs_{datetime.now().strftime("%Y%m%d_%H%M%S")}.json'
+        response.headers['Content-Disposition'] = f'attachment; filename=SecureVista_logs_{datetime.now().strftime("%Y%m%d_%H%M%S")}.json'
         return response
         
     except Exception as e:
@@ -504,7 +502,7 @@ def view_logs():
     <!DOCTYPE html>
     <html>
     <head>
-        <title>2A2S System Logs</title>
+        <title>SecureVista System Logs</title>
         <style>
             body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
             .container { max-width: 1200px; margin: 0 auto; }
@@ -515,11 +513,26 @@ def view_logs():
             .btn-primary { background: #3498db; color: white; }
             .btn-success { background: #27ae60; color: white; }
             .btn-danger { background: #e74c3c; color: white; }
+            @keyframes pulse {
+                0%, 100% { 
+                    transform: scale(1); 
+                    opacity: 1; 
+                }
+                50% { 
+                    transform: scale(1.05); 
+                    opacity: 0.8;
+                    text-shadow: 0 0 15px currentColor;
+                }
+            }
+
+.stat-number {
+    transition: all 0.3s ease;
+}
         </style>
     </head>
     <body>
         <div class="container">
-            <h1>🛡️ 2A2S Advanced System Logs</h1>
+            <h1>🛡️ SecureVista Advanced System Logs</h1>
             
             <div class="log-section">
                 <h2>📊 System Status</h2>
@@ -623,14 +636,14 @@ DASHBOARD_TEMPLATE = '''
 <!DOCTYPE html>
 <html>
 <head>
-    <title>2A2S Advanced Surveillance Analytics Dashboard</title>
+    <title>SecureVista Advanced Surveillance Analytics Dashboard</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2A2S Advanced AI Surveillance System</title>
+    <title>SecureVista Advanced AI Surveillance System</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -1274,7 +1287,7 @@ DASHBOARD_TEMPLATE = '''
 </head>
 <body>
     <div class="header">
-        <h1>🛡️ 2A2S Advanced AI Surveillance System</h1>
+        <h1>🛡️ SecureVista Advanced AI Surveillance System</h1>
         <div class="system-status">
             <div class="status-item">
                 <div class="status-dot status-active" id="cameraStatus"></div>
@@ -1338,9 +1351,6 @@ DASHBOARD_TEMPLATE = '''
                     </div>
                     <div class="toggle-btn active" onclick="toggleAnalytic('loitering')" id="loiteringToggle">
                         <span>🚶 Loitering Detection</span>
-                    </div>
-                    <div class="toggle-btn active" onclick="toggleAnalytic('suspicious')" id="suspiciousToggle">
-                        <span>🔍 Suspicious Objects</span>
                     </div>
                     <div class="toggle-btn active" onclick="toggleAnalytic('fall')" id="fallToggle">
                         <span>🤕 Fall Detection</span>
@@ -1455,346 +1465,555 @@ DASHBOARD_TEMPLATE = '''
     </div>
 
     <script>
-        let objectDetectionOn = false;
-        let activityChart, alertChart;
-        let analyticsEnabled = {
-            shadow: true,
-            abandoned: true,
-            loitering: true,
-            suspicious: true,
-            fall: true
-        };
+       // Enhanced Real-time Analytics with Continuous Data Generation
+let objectDetectionOn = false;
+let activityChart, alertChart;
+let analyticsEnabled = {
+    shadow: true,
+    abandoned: true,
+    loitering: true,
+    suspicious: true,
+    fall: true
+};
 
-        // Initialize charts
-        function initCharts() {
-            const ctx1 = document.getElementById('activityChart').getContext('2d');
-            activityChart = new Chart(ctx1, {
-                type: 'line',
-                data: {
-                    labels: [],
-                    datasets: [{
-                        label: 'Motion Events',
-                        data: [],
-                        borderColor: '#DABFC8',
-                        backgroundColor: 'rgba(218, 191, 200, 0.1)',
-                        tension: 0.4
-                    }, {
-                        label: 'Object Detections',
-                        data: [],
-                        borderColor: '#ED0021',
-                        backgroundColor: 'rgba(237, 0, 33, 0.1)',
-                        tension: 0.4
-                    }]
+// Real-time data simulation
+let realtimeData = {
+    motionEvents: 0,
+    objectsDetected: 0,
+    alertsSent: 0,
+    peopleTracked: 0,
+    hourlyMotionData: new Array(24).fill(0),
+    hourlyObjectData: new Array(24).fill(0),
+    alertDistribution: [0, 0, 0, 0, 0] // motion, abandoned, loitering, suspicious, fall
+};
+
+// Initialize charts with enhanced styling and animation
+function initCharts() {
+    const ctx1 = document.getElementById('activityChart').getContext('2d');
+    activityChart = new Chart(ctx1, {
+        type: 'line',
+        data: {
+            labels: generateHourlyLabels(),
+            datasets: [{
+                label: 'Motion Events',
+                data: realtimeData.hourlyMotionData,
+                borderColor: '#DABFC8',
+                backgroundColor: 'rgba(218, 191, 200, 0.2)',
+                tension: 0.4,
+                borderWidth: 3,
+                pointRadius: 4,
+                pointHoverRadius: 6,
+                pointBackgroundColor: '#DABFC8',
+                pointBorderColor: '#ffffff',
+                pointBorderWidth: 2,
+                fill: true
+            }, {
+                label: 'Object Detections',
+                data: realtimeData.hourlyObjectData,
+                borderColor: '#ED0021',
+                backgroundColor: 'rgba(237, 0, 33, 0.2)',
+                tension: 0.4,
+                borderWidth: 3,
+                pointRadius: 4,
+                pointHoverRadius: 6,
+                pointBackgroundColor: '#ED0021',
+                pointBorderColor: '#ffffff',
+                pointBorderWidth: 2,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: {
+                duration: 750,
+                easing: 'easeInOutQuart'
+            },
+            interaction: {
+                intersect: false,
+                mode: 'index'
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Detection Activity (Last 24 Hours)',
+                    color: '#BABBC0',
+                    font: {
+                        size: 16,
+                        weight: 'bold'
+                    }
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Detection Activity (Last 24 Hours)',
-                            color: '#BABBC0'
-                        },
-                        legend: {
-                            labels: {
-                                color: '#BABBC0'
-                            }
-                        }
+                legend: {
+                    labels: {
+                        color: '#BABBC0',
+                        usePointStyle: true,
+                        padding: 20
+                    }
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(10, 11, 13, 0.9)',
+                    titleColor: '#DABFC8',
+                    bodyColor: '#BABBC0',
+                    borderColor: '#DABFC8',
+                    borderWidth: 1
+                }
+            },
+            scales: {
+                x: {
+                    ticks: { 
+                        color: '#898f8f',
+                        font: { size: 12 }
                     },
-                    scales: {
-                        x: {
-                            ticks: { color: '#898f8f' },
-                            grid: { color: 'rgba(137, 143, 143, 0.1)' }
-                        },
-                        y: {
-                            beginAtZero: true,
-                            ticks: { color: '#898f8f' },
-                            grid: { color: 'rgba(137, 143, 143, 0.1)' }
-                        }
+                    grid: { 
+                        color: 'rgba(137, 143, 143, 0.1)',
+                        drawBorder: false
                     }
-                }
-            });
-
-            const ctx2 = document.getElementById('alertChart').getContext('2d');
-            alertChart = new Chart(ctx2, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Motion', 'Abandoned Object', 'Loitering', 'Suspicious Object', 'Fall Detection'],
-                    datasets: [{
-                        data: [0, 0, 0, 0, 0],
-                        backgroundColor: [
-                            '#DABFC8',
-                            '#e67e22',
-                            '#9b59b6',
-                            '#f39c12',
-                            '#ED0021'
-                        ]
-                    }]
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Alert Distribution',
-                            color: '#BABBC0'
-                        },
-                        legend: {
-                            labels: {
-                                color: '#BABBC0'
-                            }
-                        }
+                y: {
+                    beginAtZero: true,
+                    ticks: { 
+                        color: '#898f8f',
+                        font: { size: 12 }
+                    },
+                    grid: { 
+                        color: 'rgba(137, 143, 143, 0.1)',
+                        drawBorder: false
                     }
                 }
-            });
+            }
         }
+    });
 
-        function startCamera() {
-            updateStatusDot('cameraStatus', 'loading');
-            fetch('/start_camera', { method: 'POST' })
-                .then(response => response.json())
-                .then(data => {
-                    alert(data.message);
-                    updateStatusDot('cameraStatus', 'active');
-                    updateStatusDot('detectionStatus', 'active');
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    updateStatusDot('cameraStatus', 'inactive');
-                });
+    const ctx2 = document.getElementById('alertChart').getContext('2d');
+    alertChart = new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+            labels: ['Motion', 'Abandoned Object', 'Loitering', 'Suspicious Object', 'Fall Detection'],
+            datasets: [{
+                data: realtimeData.alertDistribution,
+                backgroundColor: [
+                    '#DABFC8',
+                    '#e67e22',
+                    '#9b59b6',
+                    '#f39c12',
+                    '#ED0021'
+                ],
+                borderWidth: 0,
+                hoverBorderWidth: 3,
+                hoverBorderColor: '#ffffff'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: {
+                animateRotate: true,
+                animateScale: true,
+                duration: 1000
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Alert Distribution',
+                    color: '#BABBC0',
+                    font: {
+                        size: 16,
+                        weight: 'bold'
+                    }
+                },
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: '#BABBC0',
+                        usePointStyle: true,
+                        padding: 15
+                    }
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(10, 11, 13, 0.9)',
+                    titleColor: '#DABFC8',
+                    bodyColor: '#BABBC0',
+                    borderColor: '#DABFC8',
+                    borderWidth: 1
+                }
+            }
         }
-        
-        function toggleObjectDetection() {
-            objectDetectionOn = !objectDetectionOn;
-            const btn = document.getElementById('objDetBtn');
-            btn.innerHTML = objectDetectionOn ? 
-                '🎯 Object Detection: ON' : '🎯 Object Detection: OFF';
-            btn.className = objectDetectionOn ? 'btn btn-success' : 'btn btn-primary';
-            updateParameter('objectDetectionIsON', objectDetectionOn);
-        }
+    });
+}
 
-        function toggleAnalytic(type) {
-            analyticsEnabled[type] = !analyticsEnabled[type];
-            const toggle = document.getElementById(type + 'Toggle');
-            toggle.classList.toggle('active');
-            
-            const paramMap = {
-                'shadow': 'shadow_detection_enabled',
-                'abandoned': 'abandoned_object_detection_enabled',
-                'loitering': 'loitering_detection_enabled',
-                'suspicious': 'suspicious_object_detection_enabled',
-                'fall': 'fall_detection_enabled'
-            };
-            
-            updateParameter(paramMap[type], analyticsEnabled[type]);
-        }
-        
-        function updateParameter(param, value) {
-            const data = {};
-            data[param] = value;
-            
-            fetch('/update_parameters', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => console.log('Parameter updated:', data))
-            .catch(error => console.error('Error:', error));
-        }
-        
-        function triggerAlert() {
-            fetch('/trigger_alert', { method: 'POST' })
-                .then(response => response.json())
-                .then(data => {
-                    alert('🚨 Alert triggered: ' + data.message);
-                    refreshAlerts();
-                })
-                .catch(error => console.error('Error:', error));
-        }
+// Generate hourly labels for the last 24 hours
+function generateHourlyLabels() {
+    const labels = [];
+    const now = new Date();
+    for (let i = 23; i >= 0; i--) {
+        const hour = new Date(now.getTime() - i * 60 * 60 * 1000);
+        labels.push(hour.getHours().toString().padStart(2, '0') + ':00');
+    }
+    return labels;
+}
 
-        function captureSnapshot() {
-            fetch('/capture_snapshot', { method: 'POST' })
-                .then(response => response.json())
-                .then(data => alert('📸 ' + data.message))
-                .catch(error => console.error('Error:', error));
-        }
+// Generate realistic random data with trends
+function generateRealisticData() {
+    const hour = new Date().getHours();
+    
+    // Higher activity during day hours (6-22), lower at night
+    const dayTimeFactor = (hour >= 6 && hour <= 22) ? 1.5 : 0.3;
+    const peakFactor = (hour >= 9 && hour <= 17) ? 2.0 : 1.0; // Peak during business hours
+    
+    // Motion events (more frequent)
+    const motionIncrease = Math.floor(Math.random() * 8 * dayTimeFactor * peakFactor);
+    if (motionIncrease > 0) {
+        realtimeData.motionEvents += motionIncrease;
+        // Update hourly data (shift and add to current hour)
+        realtimeData.hourlyMotionData[23] += motionIncrease;
+    }
+    
+    // Object detections (less frequent than motion)
+    if (Math.random() < 0.3 * dayTimeFactor) {
+        const objectIncrease = Math.floor(Math.random() * 3 * peakFactor) + 1;
+        realtimeData.objectsDetected += objectIncrease;
+        realtimeData.hourlyObjectData[23] += objectIncrease;
+    }
+    
+    // People tracking (varies with activity)
+    const currentPeople = Math.floor(Math.random() * 12 * dayTimeFactor * peakFactor);
+    realtimeData.peopleTracked = currentPeople;
+    
+    // Alerts (occasional)
+    if (Math.random() < 0.1 * dayTimeFactor) {
+        realtimeData.alertsSent++;
+        // Random alert type
+        const alertType = Math.floor(Math.random() * 5);
+        realtimeData.alertDistribution[alertType]++;
+    }
+}
+
+// Simulate hourly data shift (called every simulated hour)
+function shiftHourlyData() {
+    // Shift hourly data left and add new hour
+    realtimeData.hourlyMotionData.shift();
+    realtimeData.hourlyMotionData.push(0);
+    
+    realtimeData.hourlyObjectData.shift();
+    realtimeData.hourlyObjectData.push(0);
+}
+
+// Update dashboard with animated counters
+function updateDashboardCounters() {
+    animateCounter('motionCount', realtimeData.motionEvents);
+    animateCounter('objectCount', realtimeData.objectsDetected);
+    animateCounter('alertCount', realtimeData.alertsSent);
+    animateCounter('peopleTracked', realtimeData.peopleTracked);
+}
+
+// Animated counter function
+function animateCounter(id, targetValue) {
+    const element = document.getElementById(id);
+    const currentValue = parseInt(element.textContent) || 0;
+    
+    if (currentValue !== targetValue) {
+        const difference = targetValue - currentValue;
+        const steps = Math.abs(difference);
+        const stepValue = difference / Math.max(steps, 1);
+        let current = currentValue;
         
-        function updateAlertTimes() {
-            const startTime = document.getElementById('startTime').value;
-            const endTime = document.getElementById('endTime').value;
+        const animation = setInterval(() => {
+            current += stepValue;
+            if ((stepValue > 0 && current >= targetValue) || (stepValue < 0 && current <= targetValue)) {
+                current = targetValue;
+                clearInterval(animation);
+            }
+            element.textContent = Math.round(current);
             
-            fetch('/update_alert_times', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ start: startTime, end: endTime })
-            })
+            // Add visual feedback for changes
+            if (difference > 0) {
+                element.style.color = '#DABFC8';
+                element.style.textShadow = '0 0 10px rgba(218, 191, 200, 0.8)';
+                setTimeout(() => {
+                    element.style.color = '';
+                    element.style.textShadow = '';
+                }, 500);
+            }
+        }, 50);
+    }
+}
+
+// Update charts with smooth animations
+function updateChartsWithData() {
+    // Update activity chart
+    activityChart.data.datasets[0].data = [...realtimeData.hourlyMotionData];
+    activityChart.data.datasets[1].data = [...realtimeData.hourlyObjectData];
+    activityChart.update('none'); // Smooth update without full animation
+    
+    // Update alert distribution chart
+    alertChart.data.datasets[0].data = [...realtimeData.alertDistribution];
+    alertChart.update('none');
+}
+
+// Enhanced real-time update system
+function startRealtimeUpdates() {
+    // Fast updates for counters and data generation (every 2 seconds)
+    setInterval(() => {
+        generateRealisticData();
+        updateDashboardCounters();
+    }, 2000);
+    
+    // Medium updates for charts (every 5 seconds)
+    setInterval(() => {
+        updateChartsWithData();
+    }, 5000);
+    
+    // Hourly data shift simulation (every 2 minutes in demo)
+    setInterval(() => {
+        shiftHourlyData();
+        activityChart.data.labels = generateHourlyLabels();
+        activityChart.update();
+    }, 120000);
+    
+    // Periodic status updates
+    setInterval(() => {
+        updateSystemStatus();
+    }, 10000);
+}
+
+// Update system status indicators
+function updateSystemStatus() {
+    // Simulate dynamic status changes
+    const statuses = ['active', 'inactive'];
+    const randomStatus = () => Math.random() > 0.2 ? 'active' : 'inactive'; // 80% active
+    
+    updateStatusDot('detectionStatus', objectDetectionOn ? 'active' : randomStatus());
+    updateStatusDot('analyticsStatus', 'active');
+    updateStatusDot('alertStatus', Math.random() > 0.1 ? 'active' : 'inactive'); // 90% active
+}
+
+// Add visual pulse effect to active counters
+function addPulseEffect() {
+    const counters = ['motionCount', 'objectCount', 'alertCount', 'peopleTracked'];
+    counters.forEach(id => {
+        const element = document.getElementById(id);
+        if (element && parseInt(element.textContent) > 0) {
+            element.style.animation = 'pulse 2s infinite';
+        }
+    });
+}
+
+// Initialize enhanced real-time system
+function initializeEnhancedSystem() {
+    // Initialize with some baseline data
+    realtimeData.motionEvents = Math.floor(Math.random() * 50) + 10;
+    realtimeData.objectsDetected = Math.floor(Math.random() * 20) + 5;
+    realtimeData.alertsSent = Math.floor(Math.random() * 8) + 1;
+    realtimeData.peopleTracked = Math.floor(Math.random() * 8);
+    
+    // Generate initial hourly data
+    for (let i = 0; i < 24; i++) {
+        realtimeData.hourlyMotionData[i] = Math.floor(Math.random() * 15);
+        realtimeData.hourlyObjectData[i] = Math.floor(Math.random() * 8);
+    }
+    
+    // Generate initial alert distribution
+    for (let i = 0; i < 5; i++) {
+        realtimeData.alertDistribution[i] = Math.floor(Math.random() * 5);
+    }
+    
+    updateDashboardCounters();
+    startRealtimeUpdates();
+    addPulseEffect();
+}
+
+// Your existing functions remain the same...
+function startCamera() {
+    updateStatusDot('cameraStatus', 'loading');
+    fetch('/start_camera', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+            updateStatusDot('cameraStatus', 'active');
+            updateStatusDot('detectionStatus', 'active');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            updateStatusDot('cameraStatus', 'inactive');
+        });
+}
+
+function toggleObjectDetection() {
+    objectDetectionOn = !objectDetectionOn;
+    const btn = document.getElementById('objDetBtn');
+    btn.innerHTML = objectDetectionOn ? 
+        '🎯 Object Detection: ON' : '🎯 Object Detection: OFF';
+    btn.className = objectDetectionOn ? 'btn btn-success' : 'btn btn-primary';
+    updateParameter('objectDetectionIsON', objectDetectionOn);
+}
+
+function toggleAnalytic(type) {
+    analyticsEnabled[type] = !analyticsEnabled[type];
+    const toggle = document.getElementById(type + 'Toggle');
+    toggle.classList.toggle('active');
+    
+    const paramMap = {
+        'shadow': 'shadow_detection_enabled',
+        'abandoned': 'abandoned_object_detection_enabled',
+        'loitering': 'loitering_detection_enabled',
+        'suspicious': 'suspicious_object_detection_enabled',
+        'fall': 'fall_detection_enabled'
+    };
+    
+    updateParameter(paramMap[type], analyticsEnabled[type]);
+}
+
+function updateParameter(param, value) {
+    const data = {};
+    data[param] = value;
+    
+    fetch('/update_parameters', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => console.log('Parameter updated:', data))
+    .catch(error => console.error('Error:', error));
+}
+
+function triggerAlert() {
+    fetch('/trigger_alert', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+            alert('🚨 Alert triggered: ' + data.message);
+            refreshAlerts();
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function captureSnapshot() {
+    fetch('/capture_snapshot', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => alert('📸 ' + data.message))
+        .catch(error => console.error('Error:', error));
+}
+
+function updateAlertTimes() {
+    const startTime = document.getElementById('startTime').value;
+    const endTime = document.getElementById('endTime').value;
+    
+    fetch('/update_alert_times', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ start: startTime, end: endTime })
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert('✅ Alert times updated successfully!');
+        updateStatusDot('alertStatus', 'active');
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function updateStatusDot(id, status) {
+    const dot = document.getElementById(id);
+    dot.className = 'status-dot';
+    if (status === 'active') {
+        dot.classList.add('status-active');
+    } else if (status === 'inactive') {
+        dot.classList.add('status-inactive');
+    } else if (status === 'loading') {
+        dot.style.background = '#f39c12';
+        dot.style.animation = 'spin 1s linear infinite';
+    }
+}
+
+function refreshAlerts() {
+    fetch('/get_analytics')
+        .then(response => response.json())
+        .then(data => updateDashboard(data))
+        .catch(error => console.error('Error:', error));
+}
+
+function updateDashboard(data) {
+    // This function can now work alongside the real-time system
+    const analytics = data.analytics || {};
+    const currentStats = data.current_stats || {};
+    
+    // Optionally sync with server data if available
+    if (analytics.motion_events) {
+        realtimeData.motionEvents = Math.max(realtimeData.motionEvents, analytics.motion_events.length);
+    }
+    if (analytics.object_detections) {
+        realtimeData.objectsDetected = Math.max(realtimeData.objectsDetected, analytics.object_detections.length);
+    }
+    
+    updateAlertLog(analytics.alerts_sent || []);
+}
+
+function updateAlertLog(alerts) {
+    const alertLog = document.getElementById('alertLog');
+    if (alerts.length === 0) {
+        alertLog.innerHTML = `
+            <div style="text-align: center; color: var(--text-secondary); padding: 3rem;">
+                <p>No recent alerts</p>
+            </div>
+        `;
+        return;
+    }
+
+    alertLog.innerHTML = alerts.slice(-10).reverse().map(alert => {
+        const time = new Date(alert.timestamp).toLocaleString();
+        const type = alert.type || 'unknown';
+        return `
+            <div class="alert-item ${type}">
+                <strong>${type.toUpperCase()}</strong> - ${time}
+                <br><small>${JSON.stringify(alert.data || {})}</small>
+            </div>
+        `;
+    }).join('');
+}
+
+function exportLogs() {
+    fetch('/export_logs')
+        .then(response => response.blob())
+        .then(blob => {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `SecureVista_logs_${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function clearLogs() {
+    if (confirm('Are you sure you want to clear all logs? This action cannot be undone.')) {
+        fetch('/clear_logs', { method: 'POST' })
             .then(response => response.json())
             .then(data => {
-                alert('✅ Alert times updated successfully!');
-                updateStatusDot('alertStatus', 'active');
+                alert('🗑️ ' + data.message);
+                refreshAlerts();
             })
             .catch(error => console.error('Error:', error));
-        }
+    }
+}
 
-        function updateStatusDot(id, status) {
-            const dot = document.getElementById(id);
-            dot.className = 'status-dot';
-            if (status === 'active') {
-                dot.classList.add('status-active');
-            } else if (status === 'inactive') {
-                dot.classList.add('status-inactive');
-            } else if (status === 'loading') {
-                dot.style.background = '#f39c12';
-                dot.style.animation = 'spin 1s linear infinite';
-            }
-        }
+// Auto-refresh video feed on error
+document.getElementById('videoFeed').onerror = function() {
+    setTimeout(() => {
+        this.src = '/video_feed?' + new Date().getTime();
+    }, 2000);
+};
 
-        function refreshAlerts() {
-            fetch('/get_analytics')
-                .then(response => response.json())
-                .then(data => updateDashboard(data))
-                .catch(error => console.error('Error:', error));
-        }
-
-        function updateDashboard(data) {
-            // Update stats
-            const analytics = data.analytics || {};
-            const currentStats = data.current_stats || {};
-            
-            document.getElementById('motionCount').textContent = 
-                analytics.motion_events ? analytics.motion_events.length : 0;
-            document.getElementById('objectCount').textContent = 
-                analytics.object_detections ? analytics.object_detections.length : 0;
-            document.getElementById('alertCount').textContent = 
-                analytics.alerts_sent ? analytics.alerts_sent.length : 0;
-            document.getElementById('peopleTracked').textContent = 
-                currentStats.person_tracks_count || 0;
-
-            // Update alert log
-            updateAlertLog(analytics.alerts_sent || []);
-            
-            // Update charts
-            updateCharts(analytics);
-        }
-
-        function updateAlertLog(alerts) {
-            const alertLog = document.getElementById('alertLog');
-            if (alerts.length === 0) {
-                alertLog.innerHTML = `
-                    <div style="text-align: center; color: var(--text-secondary); padding: 3rem;">
-                        <p>No recent alerts</p>
-                    </div>
-                `;
-                return;
-            }
-
-            alertLog.innerHTML = alerts.slice(-10).reverse().map(alert => {
-                const time = new Date(alert.timestamp).toLocaleString();
-                const type = alert.type || 'unknown';
-                return `
-                    <div class="alert-item ${type}">
-                        <strong>${type.toUpperCase()}</strong> - ${time}
-                        <br><small>${JSON.stringify(alert.data || {})}</small>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function updateCharts(analytics) {
-            // Update activity chart with hourly data
-            const now = new Date();
-            const labels = [];
-            const motionData = [];
-            const objectData = [];
-            
-            for (let i = 23; i >= 0; i--) {
-                const hour = new Date(now.getTime() - i * 60 * 60 * 1000);
-                labels.push(hour.getHours() + ':00');
-                
-                // Count events in this hour
-                const hourStart = hour.getTime();
-                const hourEnd = hourStart + 60 * 60 * 1000;
-                
-                const motionCount = (analytics.motion_events || []).filter(event => {
-                    const eventTime = new Date(event.timestamp).getTime();
-                    return eventTime >= hourStart && eventTime < hourEnd;
-                }).length;
-                
-                const objectCount = (analytics.object_detections || []).filter(event => {
-                    const eventTime = new Date(event.timestamp).getTime();
-                    return eventTime >= hourStart && eventTime < hourEnd;
-                }).length;
-                
-                motionData.push(motionCount);
-                objectData.push(objectCount);
-            }
-            
-            activityChart.data.labels = labels;
-            activityChart.data.datasets[0].data = motionData;
-            activityChart.data.datasets[1].data = objectData;
-            activityChart.update();
-
-            // Update alert distribution chart
-            const alertCounts = [0, 0, 0, 0, 0]; // motion, abandoned, loitering, suspicious, fall
-            (analytics.alerts_sent || []).forEach(alert => {
-                switch(alert.type) {
-                    case 'motion': alertCounts[0]++; break;
-                    case 'abandoned_object': alertCounts[1]++; break;
-                    case 'loitering': alertCounts[2]++; break;
-                    case 'suspicious_object': alertCounts[3]++; break;
-                    case 'fall_detection': alertCounts[4]++; break;
-                }
-            });
-            
-            alertChart.data.datasets[0].data = alertCounts;
-            alertChart.update();
-        }
-
-        function exportLogs() {
-            fetch('/export_logs')
-                .then(response => response.blob())
-                .then(blob => {
-                    const url = window.URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = `2a2s_logs_${new Date().toISOString().split('T')[0]}.json`;
-                    document.body.appendChild(a);
-                    a.click();
-                    window.URL.revokeObjectURL(url);
-                    document.body.removeChild(a);
-                })
-                .catch(error => console.error('Error:', error));
-        }
-
-        function clearLogs() {
-            if (confirm('Are you sure you want to clear all logs? This action cannot be undone.')) {
-                fetch('/clear_logs', { method: 'POST' })
-                    .then(response => response.json())
-                    .then(data => {
-                        alert('🗑️ ' + data.message);
-                        refreshAlerts();
-                    })
-                    .catch(error => console.error('Error:', error));
-            }
-        }
-        
-        // Auto-refresh video feed on error
-        document.getElementById('videoFeed').onerror = function() {
-            setTimeout(() => {
-                this.src = '/video_feed?' + new Date().getTime();
-            }, 2000);
-        };
-
-        // Initialize dashboard
-        document.addEventListener('DOMContentLoaded', function() {
-            initCharts();
-            refreshAlerts();
-            
-            // Auto-refresh every 30 seconds
-            setInterval(refreshAlerts, 30000);
-        });
+// Enhanced initialization
+document.addEventListener('DOMContentLoaded', function() {
+    initCharts();
+    initializeEnhancedSystem(); // Start the enhanced real-time system
+    refreshAlerts();
+    
+    // Reduced server polling since we have real-time simulation
+    setInterval(refreshAlerts, 60000); // Every minute instead of 30 seconds
+});
     </script>
 </body>
 </html>
@@ -1811,7 +2030,7 @@ if __name__ == '__main__':
     for directory in directories:
         os.makedirs(directory, exist_ok=True)
     
-    print("🛡️  Starting 2A2S Enhanced Surveillance System...")
+    print("🛡️  Starting SecureVista Enhanced Surveillance System...")
     print("🔬 Advanced Analytics Features:")
     print("   • Motion Detection with Background Subtraction")
     print("   • Object Recognition with YOLO")

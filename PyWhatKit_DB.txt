@@ -1,0 +1,25 @@
+Date: 27/7/2025
+Time: 7:21
+Phone Number: +919324017136
+Message: 🆘 EMERGENCY: Fall detected! Person may need assistance. Time: 07:21:18 Reason: high_aspect_ratio
+--------------------
+Date: 27/7/2025
+Time: 7:25
+Phone Number: +919167467902
+Message: 🆘 EMERGENCY: Fall detected! Person may need assistance. Time: 07:25:27 Reason: sudden_height_change
+--------------------
+Date: 27/7/2025
+Time: 7:32
+Phone Number: +919167467902
+Message: 🆘 EMERGENCY: Fall detected! Person may need assistance. Time: 07:32:48 Reason: high_aspect_ratio
+--------------------
+Date: 27/7/2025
+Time: 7:34
+Phone Number: +919167467902
+Message: 🌙 ALERT: Significant shadow movement detected at 07:34:03. Possible intrusion.
+--------------------
+Date: 27/7/2025
+Time: 7:45
+Phone Number: +919167467902
+Message: 🚨 SECURITY ALERT: Abandoned backpack detected for 20 seconds at 07:45:20
+--------------------

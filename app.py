@@ -1,5 +1,5 @@
 """
-Enhanced 2A2S Surveillance System - FIXED VERSION
+SecureVista Surveillance System - FIXED VERSION
 Complete implementation with accurate person detection, tracking, pose estimation, 
 zone analytics, and real-time alerts system
 """
@@ -57,7 +57,7 @@ def initialize_camera():
                 detector = Enhanced2A2SDetector(cap)
                 detector.start_detection()
                 camera_initialized = True
-                logger.info("Enhanced 2A2S Camera initialized successfully")
+                logger.info("SecureVista Camera initialized successfully")
             else:
                 logger.error("Failed to open camera")
                 
@@ -70,7 +70,7 @@ def index():
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Enhanced 2A2S Surveillance System</title>
+    <title>SecureVista Surveillance System</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -642,7 +642,7 @@ def index():
     </style>
 </head>
 <body>
-    <h1>🔍 Enhanced 2A2S: AI-Augmented Surveillance System</h1>
+    <h1>🔍 SecureVista: AI-Augmented Surveillance System</h1>
     
     <div class="container">
         <div class="video-section">
@@ -934,7 +934,7 @@ def video_feed():
                 else:
                     # Loading frame
                     loading_frame = np.zeros((720, 1280, 3), dtype=np.uint8)
-                    cv2.putText(loading_frame, "Initializing Enhanced 2A2S System...", 
+                    cv2.putText(loading_frame, "Initializing SecureVista System...", 
                               (350, 360), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
                     ret, buffer = cv2.imencode('.jpg', loading_frame)
                     if ret:
@@ -962,7 +962,7 @@ def video_feed():
 def start_camera():
     try:
         initialize_camera()
-        return jsonify({"message": "Enhanced 2A2S Camera started successfully" if camera_initialized else "Failed to start camera"})
+        return jsonify({"message": "SecureVista Camera started successfully" if camera_initialized else "Failed to start camera"})
     except Exception as e:
         logger.error(f"Error starting camera: {e}")
         return jsonify({"message": f"Error starting camera: {str(e)}"}), 500
@@ -1080,7 +1080,7 @@ def download_logs():
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Enhanced 2A2S System Logs</title>
+    <title>SecureVista System Logs</title>
     <style>
         body { font-family: 'Inter', sans-serif; margin: 20px; background: linear-gradient(135deg, #1a1a1a, #2d2d2d); color: #DABFC8; }
         .log-container { background: rgba(218, 191, 200, 0.1); padding: 25px; border-radius: 15px; margin: 15px 0; border: 1px solid rgba(255, 255, 255, 0.2); }
@@ -1093,7 +1093,7 @@ def download_logs():
     </style>
 </head>
 <body>
-    <h1>📊 Enhanced 2A2S System Logs - FIXED VERSION</h1>
+    <h1>📊 SecureVista System Logs - FIXED VERSION</h1>
     
     <div class="status">✅ System Status: All Issues Resolved</div>
     
@@ -1151,7 +1151,7 @@ def analytics_dashboard():
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Enhanced 2A2S Analytics Dashboard</title>
+    <title>SecureVista Analytics Dashboard</title>
     <style>
         body { 
             font-family: 'Inter', sans-serif; 
@@ -1281,7 +1281,7 @@ def analytics_dashboard():
     </script>
 </head>
 <body>
-    <h1>📊 Enhanced 2A2S Analytics Dashboard</h1>
+    <h1>📊 SecureVista Analytics Dashboard</h1>
     
     <button class="refresh-btn" onclick="refreshData()">🔄 Refresh Data</button>
     
@@ -1353,7 +1353,7 @@ if __name__ == '__main__':
     os.makedirs('./logs', exist_ok=True)
     
     print("=" * 70)
-    print("🚀 Starting Enhanced 2A2S Surveillance System - FIXED VERSION")
+    print("🚀 Starting SecureVista Surveillance System - FIXED VERSION")
     print("=" * 70)
     print("🔧 FIXES IMPLEMENTED:")
     print("  ✅ JSON Serialization Error - Resolved tuple keys issue")
@@ -1379,7 +1379,7 @@ if __name__ == '__main__':
     try:
         app.run(debug=False, host='0.0.0.0', port=8080, threaded=True)
     except KeyboardInterrupt:
-        print("\n🛑 Shutting down Enhanced 2A2S System...")
+        print("\n🛑 Shutting down SecureVista System...")
         if detector:
             detector.cleanup()
         print("✅ System shutdown complete.")

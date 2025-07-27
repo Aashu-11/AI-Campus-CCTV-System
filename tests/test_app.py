@@ -9,7 +9,7 @@ from datetime import datetime, date, timedelta, time
 import tkinter as tk
 
 sys.path.append('..')
-import survelliance.Detector as Detector
+import survilleance.Detector as Detector
 from  GUI import GUI_2A2S
 import survelliance.Email_Alert as Email_Alert
 
