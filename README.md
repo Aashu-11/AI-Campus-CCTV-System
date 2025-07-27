@@ -118,10 +118,10 @@ All modules run in microservices communicating via REST and WebSocket for lightn
   <table>
     <tr>
       <td><img src="images/homepage.jpeg" alt="Dashboard"></td>
-      <td><img src="images/fallDetection.png" alt="Alert View"></td>
+      <td><img src="images/homepage2.jpeg" alt="Alert View"></td>
     </tr>
     <tr>
-      <td><img src="images/homepage2.jpeg" alt="Fall Detection"></td>
+      <td><img src="images/fallDetection.png" alt="Fall Detection"></td>
       <td><img src="images/abandoned.jpeg" alt="Abandoned object detection"></td>
     </tr>
   </table>
@@ -168,17 +168,17 @@ All modules run in microservices communicating via REST and WebSocket for lightn
 ## 🔗 Useful Links
 
 <div align="center">
-  <a href="https://www.linkedin.com/in/aayushkolte/">
-    <img src="https://img.shields.io/badge/📧-Contact_Us-red?style=for-the-badge&logo=gmail&logoColor=white" alt="Aayush">
+  <a href="https://www.linkedin.com/in/aayushkolte/" target="_blank">
+    <img src="https://img.shields.io/badge/Aayush_Kolte-LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="Aayush Kolte">
   </a>
-  <a href="https://www.linkedin.com/in/akshat-sanjay-patil/?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAFG4OzEB0sb_rfikqAW2Jv0aBfi4AxXjvF0">
-    <img src="https://img.shields.io/badge/📧-Contact_Us-red?style=for-the-badge&logo=gmail&logoColor=white" alt="Akshat">
+  <a href="https://www.linkedin.com/in/akshat-sanjay-patil/?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAFG4OzEB0sb_rfikqAW2Jv0aBfi4AxXjvF0" target="_blank">
+    <img src="https://img.shields.io/badge/Akshat_Patil-LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="Akshat Patil">
   </a>
-  <a href="https://www.linkedin.com/in/hitanshu--nayan-rathi/">
-    <img src="https://img.shields.io/badge/📧-Contact_Us-red?style=for-the-badge&logo=gmail&logoColor=white" alt="Hitanshu">
+  <a href="https://www.linkedin.com/in/hitanshu--nayan-rathi/" target="_blank">
+    <img src="https://img.shields.io/badge/Hitanshu_Rathi-LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="Hitanshu Rathi">
   </a>
-  <a href="https://www.linkedin.com/in/dhirensacher">
-    <img src="https://img.shields.io/badge/📧-Contact_Us-red?style=for-the-badge&logo=gmail&logoColor=white" alt="Dhiren">
+  <a href="https://www.linkedin.com/in/dhirensacher" target="_blank">
+    <img src="https://img.shields.io/badge/Dhiren_Sacher-LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="Dhiren Sacher">
   </a>
 </div>
 
