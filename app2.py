@@ -216,6 +216,77 @@ def update_parameters():
         })
     
     return jsonify({"status": "Detector not initialized"}), 400
+@app.route('/whatsapp_status')
+def whatsapp_status():
+    """Get WhatsApp alert system status"""
+    global detector
+    
+    if detector:
+        try:
+            status = detector.get_whatsapp_status()
+            return jsonify({
+                "status": "success",
+                "whatsapp_config": status,
+                "timestamp": datetime.now().isoformat()
+            })
+        except Exception as e:
+            return jsonify({"error": f"Error getting WhatsApp status: {str(e)}"}), 500
+    
+    return jsonify({"error": "Detector not initialized"}), 400
+
+@app.route('/update_whatsapp_config', methods=['POST'])
+def update_whatsapp_config():
+    """Update WhatsApp configuration"""
+    global detector
+    
+    if detector:
+        try:
+            data = request.get_json()
+            
+            if 'enabled' in data:
+                detector.enable_whatsapp_alerts(bool(data['enabled']))
+            
+            if 'phone_number' in data:
+                detector.update_whatsapp_number(str(data['phone_number']))
+            
+            if 'cooldown' in data:
+                detector.set_whatsapp_cooldown(int(data['cooldown']))
+            
+            return jsonify({
+                "status": "WhatsApp configuration updated successfully",
+                "config": detector.get_whatsapp_status(),
+                "timestamp": datetime.now().isoformat()
+            })
+        except Exception as e:
+            return jsonify({"error": f"Error updating WhatsApp config: {str(e)}"}), 500
+    
+    return jsonify({"error": "Detector not initialized"}), 400
+
+@app.route('/test_whatsapp_alert', methods=['POST'])
+def test_whatsapp_alert():
+    """Test WhatsApp alert system"""
+    global detector
+    
+    if detector:
+        try:
+            test_data = {
+                'class': 'Test Object',
+                'duration': 25.5,
+                'center': [320, 240],
+                'timestamp': datetime.now().isoformat()
+            }
+            
+            detector.send_whatsapp_alert('abandoned_object', test_data)
+            
+            return jsonify({
+                "message": "Test WhatsApp alert sent successfully",
+                "phone_number": detector.whatsapp_number,
+                "timestamp": datetime.now().isoformat()
+            })
+        except Exception as e:
+            return jsonify({"error": f"Error sending test WhatsApp alert: {str(e)}"}), 500
+    
+    return jsonify({"error": "Detector not initialized"}), 400
 
 @app.route('/trigger_alert', methods=['POST'])
 def trigger_alert():
@@ -669,7 +740,12 @@ DASHBOARD_TEMPLATE = '''
 
         body { 
             font-family: 'Inter', sans-serif; 
-            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1c1e 50%, var(--dark-bg) 100%);
+            background: radial-gradient(circle at 30% 30%, rgba(94, 8, 2, 0.7) 0%, rgba(26, 0, 0, 0.9) 40%, #1a0000 80%),
+            linear-gradient(120deg, #1a0000 0%, #2c0a0a 25%, #3b0e0e 50%, #5e0802 75%, #b2b2b2 100%);
+            background-blend-mode: overlay, multiply;
+            box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.8);
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
             color: var(--text-primary);
             min-height: 100vh;
             overflow-x: hidden;
@@ -2018,6 +2094,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </body>
 </html>
 '''
+
 if __name__ == '__main__':
     # Create comprehensive log directory structure
     directories = [

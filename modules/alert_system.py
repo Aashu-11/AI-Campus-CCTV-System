@@ -33,14 +33,6 @@ class AlertSystem:
         self.alert_logs.append(alert_entry)
         logger.info(f"ALERT: {alert_type} - {message}")
     
-    def trigger_fall_alert(self, object_id, timestamp):
-        """Trigger fall detection alert"""
-        if self.should_send_alert(f'fall_{object_id}'):
-            message = f"Fall detected for person ID {object_id}"
-            self.log_alert('fall', message)
-            return True
-        return False
-    
     def trigger_crowd_alert(self, count, timestamp):
         """Trigger crowd detection alert"""
         if self.should_send_alert('crowd'):
