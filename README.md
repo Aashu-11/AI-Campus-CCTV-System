@@ -121,7 +121,7 @@ All modules run in microservices communicating via REST and WebSocket for lightn
       <td><img src="images/homepage2.jpeg" alt="Alert View"></td>
     </tr>
     <tr>
-      <td><img src="images/fallDetection.png" alt="Fall Detection"></td>
+      <td><img src="images/person detection.jpeg" alt="Person Detection"></td>
       <td><img src="images/abandoned.jpeg" alt="Abandoned object detection"></td>
     </tr>
   </table>
