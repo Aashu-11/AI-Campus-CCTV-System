@@ -24,7 +24,7 @@ Traditional CCTV systems are reactive and unreliable under human supervision. 94
 
 </td>
 <td width="40%">
-<img src="src/assets/surveillance-hero-bg.jpg" width="100%">
+<img src="images/surveillance-hero-bg.jpg" width="100%">
 </td>
 </tr>
 </table>
