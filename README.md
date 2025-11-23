@@ -174,12 +174,6 @@ All modules run in microservices communicating via REST and WebSocket for lightn
   <a href="https://www.linkedin.com/in/akshat-sanjay-patil/?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAFG4OzEB0sb_rfikqAW2Jv0aBfi4AxXjvF0" target="_blank">
     <img src="https://img.shields.io/badge/Akshat_Patil-LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="Akshat Patil">
   </a>
-  <a href="https://www.linkedin.com/in/hitanshu--nayan-rathi/" target="_blank">
-    <img src="https://img.shields.io/badge/Hitanshu_Rathi-LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="Hitanshu Rathi">
-  </a>
-  <a href="https://www.linkedin.com/in/dhirensacher" target="_blank">
-    <img src="https://img.shields.io/badge/Dhiren_Sacher-LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="Dhiren Sacher">
-  </a>
 </div>
 
 > 🔐 *“A smarter campus isn’t just safe — it’s aware.”*
